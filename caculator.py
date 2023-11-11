@@ -14,7 +14,7 @@ def evaluate():
         result=str(eval(calculation))
         calculation = ""
         text_result.delete(1.0,"end")
-        text_result.insert(1.0,calculation)
+        text_result.insert(1.0,result)
     except:
         clear()
         text_result.insert(1.0, "Error")
@@ -24,6 +24,18 @@ def clear():
     global calculation
     calculation = ""
     text_result.delete(1.0,"end")
+
+def percent():
+    global calculation
+    try:
+        result=eval(calculation) / 100
+        calculation = str(result)
+        text_result.delete(1.0,"end")
+        text_result.insert(1.0,calculation)
+    except:
+        clear()
+        text_result.insert(1.0, "Error")
+        pass
 
 
 
@@ -67,9 +79,11 @@ open = tk.Button(root, text="(", command=lambda:add("("), width=5,font=("Arial",
 open.grid(row=5,column=2)
 close = tk.Button(root, text=")", command=lambda:add(")"), width=5,font=("Arial", 12))
 close.grid(row=5,column=3)
-equal = tk.Button(root, text="=", command=lambda:evaluate, width=5,font=("Arial", 12))
+equal = tk.Button(root, text="=", command=evaluate, width=5,font=("Arial", 12))
 equal.grid(row=6,column=1, columnspan=3)
 btn_clear = tk.Button(root, text="C", command=clear, width=5,font=("Arial", 12))
 btn_clear.grid(row=6,column=1)
+btn_percent = tk.Button(root, text="%", command=percent, width=5,font=("Arial", 12))
+btn_percent.grid(row=6,column=3)
 
 root.mainloop()
