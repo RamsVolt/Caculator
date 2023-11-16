@@ -27,15 +27,12 @@ def clear():
 
 def percent():
     global calculation
-    try:
-        result=eval(calculation) / 100
-        calculation = str(result)
-        text_result.delete(1.0,"end")
-        text_result.insert(1.0,calculation)
-    except:
-        clear()
-        text_result.insert(1.0, "Error")
-        pass
+    result=eval(calculation) / 100
+    calculation = str(result)
+    text_result.delete(1.0,"end")
+    text_result.insert(1.0,calculation)
+    
+       
 
 
 
